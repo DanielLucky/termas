@@ -14,9 +14,9 @@ def listen_server(sock):
             sock.close()
 
 
-def start_client():
+def start_client(host):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(('', 1234))
+    sock.connect((host, 1234))
     threading.Thread(target=listen_server, args=[sock]).start()
     print('Connect to chat!')
     sock.send(bytes('[' + USERNAME + '] join to the chat', 'utf-8'))
@@ -26,5 +26,6 @@ def start_client():
 
 
 if __name__ == '__main__':
+    host = str(input('Please enter server ip: '))
     USERNAME = str(input('Enter your name: '))
-    start_client()
+    start_client(host)
