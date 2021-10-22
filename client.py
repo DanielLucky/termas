@@ -25,7 +25,7 @@ def start_client(host):
             msg = str(input())
             sock.send(bytes('[' + USERNAME + '] -> ' + msg, 'utf-8'))
     except ConnectionRefusedError:
-        print('Сервер не отвечает')
+        print('cant connect to server')
 
 
 if __name__ == '__main__':
